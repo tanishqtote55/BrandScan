@@ -1,0 +1,114 @@
+/* src/App.css */
+.App {
+  text-align: center;
+  height: 400px;
+  width: 500px;
+  border-radius: 5%;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background-color: white;
+  position: relative;
+}
+
+.timer {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.logo-container {
+  margin: 20px 0;
+}
+
+.logo-image {
+  width: 200px;
+  /* height: auto; */
+  height: 200px; /* Set a fixed height */
+  object-fit: contain; /* Ensure the aspect ratio of the image is maintained */
+  margin: 20px 0;
+}
+
+.search-container {
+  position: absolute;
+  width: 100%;
+  max-width: 400px;
+  bottom: 0; /* Fixes the search bar at the bottom of the App container */
+  left: 50%;
+  transform: translateX(-50%);
+  padding-bottom: 20px;
+}
+
+.search-bar {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-radius: 25px;
+  transition: border-color 0.3s ease;
+  margin-left: -14px;
+}
+
+.error .search-bar {
+  border: 2px solid red;
+}
+
+.dropdown {
+  position: absolute;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  width: 100%;
+  max-height: 150px;
+  overflow-y: auto;
+  z-index: 10;
+}
+
+.dropdown div {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.dropdown div:hover {
+  background-color: #f0f0f0;
+}
+
+.next-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.next-button:hover {
+  background-color: #218838;
+}
+
+.score-dashboard {
+  margin-top: 20px;
+  font-size: 24px;
+  color: #333;
+}
+
+/* Responsive styles for mobile devices */
+@media (max-width: 768px) {
+  .logo-image {
+    width: 150px;
+  }
+
+  .search-bar {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .next-button {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+
+  .timer {
+    font-size: 18px;
+  }
+}
