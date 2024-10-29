@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './Scoreboard.css'; // Import specific CSS for Scoreboard
-import '@fortawesome/fontawesome-free/css/all.min.css'; // Import Font Awesome
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLinkedin, faWhatsapp, faInstagram } from '@fortawesome/free-brands-svg-icons';
 
 const Scoreboard = ({ score, totalQuestions, dummyScores }) => {
     const [showModal, setShowModal] = useState(false);
@@ -76,13 +77,13 @@ const Scoreboard = ({ score, totalQuestions, dummyScores }) => {
 
                         <div className="social-icons">
                             <span onClick={shareOnLinkedIn} style={{ cursor: 'pointer', color: '#0077B5' }}> 
-                                <i className="fab fa-linkedin" style={{ fontSize: '24px', margin: '0 10px' }}></i>
+                                <FontAwesomeIcon icon={faLinkedin} style={{ fontSize: '24px', margin: '0 10px' }} />
                             </span>
                             <span onClick={shareOnWhatsAppHybrid} style={{ cursor: 'pointer' }}>
-                                <i className="fab fa-whatsapp" style={{ fontSize: '24px', margin: '0 10px', color: 'green' }}></i>
+                                <FontAwesomeIcon icon={faWhatsapp} style={{ fontSize: '24px', color: '#25D366', margin: '0 10px' }} />
                             </span>
                             <span style={{ cursor: 'pointer' }}>
-                                <i className="fab fa-instagram" style={{ fontSize: '24px', margin: '0 10px', color: '#E1306C' }}></i>
+                                <FontAwesomeIcon icon={faInstagram} style={{ fontSize: '24px', color: '#E1306C', margin: '0 10px' }} />
                             </span>
                         </div>
                     </div>

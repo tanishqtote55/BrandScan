@@ -1,0 +1,86 @@
+.instructions-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    text-align: left;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+.instructions-container h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.instructions-container ul {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.instructions-container li {
+    margin: 10px 0;
+    font-size: 18px;
+    color: #555;
+}
+
+.start-button {
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.start-button:hover {
+    background-color: #FFA500; /* Orange color on hover */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .instructions-container {
+        padding: 15px;
+        max-width: 90%;
+    }
+
+    .instructions-container h2 {
+        font-size: 20px;
+    }
+
+    .instructions-container li {
+        font-size: 16px;
+    }
+
+    .start-button {
+        font-size: 16px;
+        padding: 8px 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .instructions-container {
+        padding: 10px;
+    }
+
+    .instructions-container h2 {
+        font-size: 18px;
+    }
+
+    .instructions-container li {
+        font-size: 14px;
+    }
+
+    .start-button {
+        font-size: 14px;
+        padding: 6px 12px;
+    }
+}
