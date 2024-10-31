@@ -7,7 +7,7 @@
     text-align: center;
 }
 
-.Score{
+.Score {
     display: flex;
     justify-content: center; /* Center horizontally */
     align-items: center;     /* Center vertically */
@@ -28,33 +28,16 @@
     color: #555;
 }
 
-.scoreboard ul {
-    list-style: none;
-    padding: 0;
-}
-
-.scoreboard li {
-    font-size: 16px;
-    padding: 5px 0;
-}
-
-.scoreboard li.highlight {
-    font-weight: bold;
-    color: #2b8a3e;
-}
-
-h3 {
-    font-size: 20px;
-    color: #333;
-    margin-bottom: 10px;
-}
-
-
-/* Newly Added */
-
 .share-buttons {
     text-align: center;
-    margin-top: 10px;
+    margin-top: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 5px;
 }
 
 .social-icons {
@@ -64,14 +47,7 @@ h3 {
     margin-top: 10px;
 }
 
-button {
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-
-/* Again Newly Added */
+/* Modal styles */
 .modal {
     position: fixed;
     top: 0;
@@ -113,13 +89,6 @@ textarea {
     font-size: 16px; /* Optional: adjust font size */
 }
 
-.social-icons {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 10px;
-}
-
 .copy-button {
     margin-top: 7px;
     padding: 10px 20px; /* Adjust padding as needed */
@@ -143,4 +112,19 @@ textarea {
 
 .social-icons span:hover {
     transform: scale(1.2); /* Increase size on hover */
+}
+
+.share-button {
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.share-button:hover {
+    background-color: #FFA500; /* Orange color on hover */
 }

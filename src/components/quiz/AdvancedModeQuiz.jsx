@@ -11,7 +11,7 @@ function App() {
     const [options, setOptions] = useState([]);
     const [isCorrect, setIsCorrect] = useState(null);
     const [isSubmitted, setIsSubmitted] = useState(false);
-    const [timeLeft, setTimeLeft] = useState(3); // 1 minute in seconds
+    const [timeLeft, setTimeLeft] = useState(300); // 1 minute in seconds
     const [timeUsed, setTimeUsed] = useState(0); // Time spent
     const [score, setScore] = useState(0);
     const [questionsAttempted, setQuestionsAttempted] = useState(0); // Track total attempts
