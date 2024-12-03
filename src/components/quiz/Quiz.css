@@ -1,4 +1,15 @@
-.container{
+.App {
+    text-align: center;
+    height: 500px;
+    width: 500px;
+    border-radius: 5%;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background-color: white;
+    position: relative;
+}
+
+.container {
     width: 640px;
     margin: auto;
     margin-top: 150px;
@@ -10,13 +21,19 @@
     border-radius: 10px;
     padding: 40px 50px;
 }
-.container hr{
+
+.container hr {
     height: 2px;
     border: none;
     background: #777b82;
 }
 
-.container ul li{
+.container ul {
+    list-style: none; 
+    padding: 0;
+}
+
+.container ul li {
     display: flex;
     align-items: center;
     height: 70px;
@@ -26,9 +43,19 @@
     margin-bottom: 20px;
     font-size: 20px;
     cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
 }
 
-.container button{
+.container ul li:hover {
+    background-color: #e6e6e6;
+}
+
+.container ul li:focus {
+    outline: 2px solid #0056b3;
+    outline-offset: 2px;
+}
+
+.container button {
     margin: auto;
     width: 250px;
     height: 65px;
@@ -38,28 +65,42 @@
     font-weight: 500;
     border-radius: 8px;
     cursor: pointer;
+    transition: background-color 0.3s; 
 }
 
-.container .index{
+.container button:hover {
+    background: #452e7d; 
+}
+
+.container button:disabled {
+    background: #ccc; 
+    cursor: not-allowed;
+}
+
+.container .index {
     margin: auto;
     font-size: 18px;
 }
 
 .correct {
-    background-color: #d4fcdc;  
-    border-color: #00b300;  
+    background-color: #d4fcdc;
+    border: 2px solid #00b300;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .wrong {
-    background-color: #ffcccc;  
-    border-color: #ff3333; 
+    background-color: #ffcccc; 
+    border: 2px solid #ff3333; 
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.hidden {
+    display: none;
 }
 
 .timer {
     font-size: 20px;
-    font-weight: bold;
-    margin-top: 20px;
-    color: #ff4500;  
+    margin-bottom: 10px;
 }
 
 .score {
@@ -69,3 +110,80 @@
     color: #333;
 }
 
+.options-container {
+    display: block; 
+    gap: 10px;
+}
+
+.option-button {
+    display: block; 
+    width: 100%; 
+    padding: 15px;
+    font-size: 20px;
+    border: 1px solid #686868; 
+    border-radius: 8px;
+    transition: background-color 0.3s, border-color 0.3s; 
+    margin-bottom: 10px;
+}
+
+.option-button:hover {
+    background-color: #e6e6e6;
+}
+
+.option-button:focus {
+    outline: 2px solid #0056b3;
+    outline-offset: 2px;
+}
+
+.selected {
+    opacity: 0.7;
+}
+
+.logo-container {
+    margin: 20px 0;
+}
+
+.logo-image {
+    width: 200px;
+    height: 200px;
+    object-fit: contain; 
+    margin: 20px 0;
+}
+
+.next-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.next-button:hover {
+    background-color: #218838;
+}
+
+.next-button:disabled {
+    background-color: #d3d3d3;
+    color: #8c8c8c;
+    cursor: not-allowed;
+    border: 1px solid #a9a9a9;
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 90%;
+        padding: 20px;
+    }
+    .logo-image {
+        width: 150px;
+        height: 150px;
+    }
+    .option-button {
+        font-size: 16px;
+        padding: 10px;
+    }
+}

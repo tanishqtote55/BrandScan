@@ -1,121 +1,124 @@
-import React, { useState, useRef, useEffect } from 'react';
-import './Quiz.css';
-import { data } from '../../assets/data'; 
+import React, { useState, useEffect } from "react";
+import { logos } from "../../assets/logoData"; 
 import { dummyScores } from '../../assets/DummyData'; 
-import Scoreboard from './Scoreboard'; // Importing the Scoreboard component
+import Scoreboard from './Scoreboard'; 
+import "./Quiz.css";
 
-const Quiz = () => {
-    const [index, setIndex] = useState(0);
-    const [shuffledData, setShuffledData] = useState([]);
-    const [question, setQuestion] = useState(null);
-    const [lock, setLock] = useState(false);
+function App() {
+    const [logoList, setLogoList] = useState([...logos]); 
+    const [currentLogo, setCurrentLogo] = useState({}); 
+    const [options, setOptions] = useState([]); 
+    const [selectedOption, setSelectedOption] = useState(null); 
+    const [isCorrect, setIsCorrect] = useState(null);
+    const [isSubmitted, setIsSubmitted] = useState(false);
+    const [timeLeft, setTimeLeft] = useState(300); 
     const [score, setScore] = useState(0);
-    const [timeLeft, setTimeLeft] = useState(300);
-    const [isQuizActive, setIsQuizActive] = useState(true);  
-    const [quizEnded, setQuizEnded] = useState(false); 
-
-    const optionRefs = useRef([]);
-
-    const shuffleArray = (array) => {
-        for (let i = array.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [array[i], array[j]] = [array[j], array[i]];
-        }
-        return array;
-    };
+    const [questionsAttempted, setQuestionsAttempted] = useState(0);
+    const [quizOver, setQuizOver] = useState(false);
 
     useEffect(() => {
-        const shuffledQuestions = shuffleArray([...data]);  
-        const updatedQuestions = shuffledQuestions.map(q => {
-            const options = shuffleArray([q.option1, q.option2, q.option3, q.option4]);  
-            const correctOption = options.find(option => option === q[`option${q.ans}`]);
-
-            return {
-                ...q,
-                options: options,
-                correctOption: correctOption  
-            };
-        });
-        setShuffledData(updatedQuestions);
-        setQuestion(updatedQuestions[index]);
+        getNextLogo();
     }, []);
 
     useEffect(() => {
-        if (timeLeft > 0 && isQuizActive) {
-            const timer = setTimeout(() => setTimeLeft(timeLeft - 1), 1000);
-            return () => clearTimeout(timer);
-        } else if (timeLeft === 0) {
-            endQuiz();
-        }
-    }, [timeLeft, isQuizActive]);
-
-    useEffect(() => {
-        if (shuffledData.length > 0) {
-            setQuestion(shuffledData[index]);
-            setLock(false);
-        }
-    }, [index, shuffledData]);
-
-    const checkAns = (e, selectedOption) => {
-        if (!lock && isQuizActive) {
-            const correctAnswer = question.correctOption; 
-
-            if (correctAnswer === selectedOption) {
-                e.target.classList.add("correct");  
-                setScore(score + 1);
-            } else {
-                e.target.classList.add("wrong"); 
-            }
-            setLock(true);
-        }
-    };
-
-    const next = () => {
-        if (index < shuffledData.length - 1) {
-            setIndex(index + 1);
-            optionRefs.current.forEach(option => {
-                option.classList.remove("correct", "wrong");
-            });
+        if (!quizOver && timeLeft > 0) {
+            const timerId = setInterval(() => {
+                setTimeLeft(timeLeft - 1);
+            }, 1000);
+            return () => clearInterval(timerId);
         } else {
-            endQuiz();
+            handleQuizSubmit(); 
         }
+    }, [timeLeft, quizOver]);
+
+    const getNextLogo = () => {
+        if (logoList.length === 0) {
+            handleQuizSubmit(); 
+            return;
+        }
+        const randomIndex = Math.floor(Math.random() * logoList.length);
+        const selectedLogo = logoList[randomIndex];
+        const newLogoList = logoList.filter((_, index) => index !== randomIndex);
+        setLogoList(newLogoList);
+        setCurrentLogo(selectedLogo);
+        setOptions(generateOptions(selectedLogo.name));
+        setSelectedOption(null); 
+        setIsCorrect(null); 
+        setIsSubmitted(false); 
     };
 
-    const endQuiz = () => {
-        setIsQuizActive(false);
-        setQuizEnded(true);
+    const generateOptions = (correctName) => {
+        const incorrectOptions = logos
+            .filter((logo) => logo.name !== correctName)
+            .sort(() => 0.5 - Math.random())
+            .slice(0, 3) 
+            .map(logo => logo.name);
+
+        const allOptions = [correctName, ...incorrectOptions];
+        return allOptions.sort(() => 0.5 - Math.random());
     };
+
+    const handleSubmit = () => {
+        setQuestionsAttempted(questionsAttempted + 1);
+        setIsSubmitted(true);
+        if (isCorrect) {
+            setScore(score + 1);
+        }
+
+        setTimeout(() => {
+            getNextLogo();
+        }, 500);
+    };
+
+    const handleOptionClick = (option) => {
+        if (!isSubmitted) {
+            setSelectedOption(option);
+            if (option === currentLogo.name) {
+                setIsCorrect(true);
+            } else {
+                setIsCorrect(false); 
+            }
+        }
+    };
+    
+    const handleQuizSubmit = () => {
+        setQuizOver(true);
+    };
+
+    if (quizOver) {
+        return (
+            <div className="Score">
+                <Scoreboard score={score} totalQuestions={questionsAttempted} dummyScores={dummyScores} />
+            </div>
+        );
+    }
 
     return (
-        <div className='container'>
-            <h1>Brand Scan</h1>
-            <hr />
-            {!quizEnded ? (
-                <>
-                    {question && (
-                        <>
-                            <h2>{index + 1}. {question.question}</h2>
-                            <ul>
-                                {question.options.map((option, i) => (
-                                    <li
-                                        key={i}
-                                        ref={(el) => (optionRefs.current[i] = el)}
-                                        onClick={(e) => checkAns(e, option)}
-                                    >
-                                        {option}
-                                    </li>
-                                ))}
-                            </ul>
-                        </>
-                    )}
-                    <button onClick={next} disabled={!isQuizActive || lock === false}>Next</button>
-                    <div className="timer">Time Left: {Math.floor(timeLeft / 60)}:{String(timeLeft % 60).padStart(2, '0')}</div>
-                </>
-            ) : (
-                <Scoreboard score={score} totalQuestions={shuffledData.length} dummyScores={dummyScores} />
-            )}
+        <div className="App">
+            <div className="timer">
+                Time Left: {Math.floor(timeLeft / 60)}:{timeLeft % 60 < 10 ? "0" : ""}{timeLeft % 60}
+            </div>
+            <div className="logo-container">
+                <img src={currentLogo.logo} alt="Company Logo" className="logo-image" />
+            </div>
+            <div className="options-container">
+                {options.map((option, index) => (
+                    <button 
+                        key={index} 
+                        onClick={() => handleOptionClick(option)} 
+                        className={`option-button ${isSubmitted ? 
+                            (option === currentLogo.name ? 'correct' : selectedOption === option ? 'wrong' : '') : ''
+                        } ${selectedOption === option ? 'selected' : ''} ${isSubmitted && option !== currentLogo.name ? 'hidden' : ''}`}
+                    >
+                        {option}
+                    </button>
+                ))}
+            </div>
+            <button onClick={handleSubmit} className="next-button" disabled={!selectedOption || isSubmitted}>
+                Next
+            </button>
         </div>
     );
-};
+}
 
-export default Quiz;
+export default App;

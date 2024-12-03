@@ -1,20 +1,17 @@
 import React, { useState } from 'react';
 import './Scoreboard.css'; // Import specific CSS for Scoreboard
-import '@fortawesome/fontawesome-free/css/all.min.css'; // Import Font Awesome
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLinkedin, faWhatsapp, faInstagram } from '@fortawesome/free-brands-svg-icons';
 
 const Scoreboard = ({ score, totalQuestions, dummyScores }) => {
     const [showModal, setShowModal] = useState(false);
-    
-    const finalScores = [...dummyScores, { username: "You", score }];
-    const sortedScores = finalScores.sort((a, b) => b.score - a.score);
-    const userRank = sortedScores.findIndex(user => user.username === "You") + 1;
 
     const shareMessage = encodeURIComponent(
-        `I just completed the BrandScan practice game for the Pune Startup Fest and scored ${score}/${totalQuestions} ! Think you can beat my score? 💯 Test your brand knowledge and take on the challenge! Play now and share your results! [Link to game] #BrandScanChallenge #PuneStartupFest #ThinkYouKnowBrands.`
+        `I just completed the BrandScan practice game for the Pune Startup Fest and scored ${score}/${totalQuestions}! Think you can beat my score? 💯 Test your brand knowledge and take on the challenge! Play now and share your results! [Link to game] #BrandScanChallenge #PuneStartupFest #ThinkYouKnowBrands.`
     );
 
     const copyMessage = () => {
-        const messageToCopy = `I just completed the BrandScan practice game for the Pune Startup Fest and scored ${score}/${totalQuestions} ! Think you can beat my score? 💯 Test your brand knowledge and take on the challenge! Play now and share your results! [Link to game] #BrandScanChallenge #PuneStartupFest #ThinkYouKnowBrands.`;
+        const messageToCopy = `I just completed the BrandScan practice game for the Pune Startup Fest and scored ${score}/${totalQuestions}! Think you can beat my score? 💯 Test your brand knowledge and take on the challenge! Play now and share your results! [Link to game] #BrandScanChallenge #PuneStartupFest #ThinkYouKnowBrands.`;
         navigator.clipboard.writeText(messageToCopy);
         alert("Message copied! You can now share it.");
     };
@@ -42,26 +39,25 @@ const Scoreboard = ({ score, totalQuestions, dummyScores }) => {
         }, 500);
     };
 
+    const openInstagram = () => {
+        const instagramUrl = "https://www.instagram.com"; // Replace with your specific profile link if desired
+        window.open(instagramUrl, "_blank");
+    };
+
     const toggleModal = () => {
         setShowModal(!showModal);
     };
 
     return (
         <div className="scoreboard">
-            <h2>Quiz Over!</h2>
+            <h2>Congratulations!</h2>
             <p>Your Score: {score} / {totalQuestions}</p>
-            <p>Your Rank: {userRank}</p>
+            <p>Accuracy: {(score / totalQuestions * 100).toFixed(2)}%</p>
 
-            <h3>Scoreboard:</h3>
-            <ul>
-                {sortedScores.map((user, i) => (
-                    <li key={i} className={user.username === "You" ? "highlight" : ""}>
-                        {i + 1}. {user.username}: {user.score} {user.username === "You" ? "(You)" : ""}
-                    </li>
-                ))}
-            </ul>
-
-            <button onClick={toggleModal}>Share</button>
+            <div className="share-buttons">
+                <button className="share-button" onClick={toggleModal}>Share</button>
+                <button className="share-button" onClick={() => window.location.reload()}>Re-attempt</button>
+            </div>
 
             {showModal && (
                 <div className="modal">
@@ -69,20 +65,19 @@ const Scoreboard = ({ score, totalQuestions, dummyScores }) => {
                         <span className="close" onClick={toggleModal}>&times;</span>
                         <h3>Share:</h3>
                         <textarea
-                            readOnly 
-                            value={`I just completed the BrandScan practice game for the Pune Startup Fest and scored ${score}/${totalQuestions} ! Think you can beat my score? 💯 Test your brand knowledge and take on the challenge! Play now and share your results! [Link to game] #BrandScanChallenge #PuneStartupFest #ThinkYouKnowBrands.`}
+                            readOnly
+                            value={`I just completed the BrandScan practice game for the Pune Startup Fest and scored ${score}/${totalQuestions}! Think you can beat my score? 💯 Test your brand knowledge and take on the challenge! Play now and share your results! [Link to game] #BrandScanChallenge #PuneStartupFest #ThinkYouKnowBrands.`}
                         />
-                        <button class="copy-button" onClick={copyMessage}>Copy Message</button>
-
+                        <button className="copy-button" onClick={copyMessage}>Copy Message</button>
                         <div className="social-icons">
-                            <span onClick={shareOnLinkedIn} style={{ cursor: 'pointer', color: '#0077B5' }}> 
-                                <i className="fab fa-linkedin" style={{ fontSize: '24px', margin: '0 10px' }}></i>
+                            <span onClick={shareOnLinkedIn} style={{ cursor: 'pointer', color: '#0077B5' }}>
+                                <FontAwesomeIcon icon={faLinkedin} style={{ fontSize: '24px', margin: '0 10px' }} />
                             </span>
                             <span onClick={shareOnWhatsAppHybrid} style={{ cursor: 'pointer' }}>
-                                <i className="fab fa-whatsapp" style={{ fontSize: '24px', margin: '0 10px', color: 'green' }}></i>
+                                <FontAwesomeIcon icon={faWhatsapp} style={{ fontSize: '24px', color: '#25D366', margin: '0 10px' }} />
                             </span>
-                            <span style={{ cursor: 'pointer' }}>
-                                <i className="fab fa-instagram" style={{ fontSize: '24px', margin: '0 10px', color: '#E1306C' }}></i>
+                            <span onClick={openInstagram} style={{ cursor: 'pointer' }}>
+                                <FontAwesomeIcon icon={faInstagram} style={{ fontSize: '24px', color: '#E1306C', margin: '0 10px' }} />
                             </span>
                         </div>
                     </div>
@@ -93,8 +88,6 @@ const Scoreboard = ({ score, totalQuestions, dummyScores }) => {
 };
 
 export default Scoreboard;
-
-
 
 
 // import React, { useState } from 'react';
