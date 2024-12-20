@@ -128,3 +128,17 @@ textarea {
 .share-button:hover {
     background-color: #FFA500; /* Orange color on hover */
 }
+
+.celebration-gif-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+    overflow: hidden;
+}
+
+.celebration-gif {
+    width: 400px;
+    height: 200px;
+    object-fit: contain;
+    border-radius: 10px;
+}

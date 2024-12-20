@@ -7,7 +7,7 @@ const Scoreboard = ({ score, totalQuestions, dummyScores }) => {
     const [showModal, setShowModal] = useState(false);
 
     const shareMessage = encodeURIComponent(
-        `I just completed the BrandScan practice game for the Pune Startup Fest and scored ${score}/${totalQuestions}! Think you can beat my score? 💯 Test your brand knowledge and take on the challenge! Play now and share your results! [Link to game] #BrandScanChallenge #PuneStartupFest #ThinkYouKnowBrands.`
+        `I just completed the BrandScan practice game for the Pune Startup Fest and scored ${score}/${totalQuestions}! Think you can beat my score? 💯Test your brand knowledge and take on the challenge! Play now and share your results! [Link to game] #BrandScanChallenge #PuneStartupFest #ThinkYouKnowBrands.`
     );
 
     const copyMessage = () => {
@@ -50,6 +50,15 @@ const Scoreboard = ({ score, totalQuestions, dummyScores }) => {
 
     return (
         <div className="scoreboard">
+            {(score / totalQuestions * 100) === 100 && (
+                <div className="celebration-gif-container">
+                    <img 
+                        src="/celebration.gif"
+                        alt="Perfect Score Celebration"
+                        className="celebration-gif"
+                    />
+                </div>
+            )}
             <h2>Congratulations!</h2>
             <p>Your Score: {score} / {totalQuestions}</p>
             <p>Accuracy: {(score / totalQuestions * 100).toFixed(2)}%</p>
