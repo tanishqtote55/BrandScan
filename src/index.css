@@ -18,3 +18,7 @@ body{
   /* background-image: linear-gradient( #a258ff,#3857e9); */
   background-image: linear-gradient(to right, #a258ff, #a258ff, #3857e9);
 }
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

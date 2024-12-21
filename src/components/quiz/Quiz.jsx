@@ -3,6 +3,7 @@ import { logos } from "../../assets/logoData";
 import { dummyScores } from '../../assets/DummyData'; 
 import Scoreboard from './Scoreboard'; 
 import "./Quiz.css";
+import BrandScan from "../share/UI";
 
 function App() {
     const [logoList, setLogoList] = useState([...logos]); 
@@ -11,7 +12,7 @@ function App() {
     const [selectedOption, setSelectedOption] = useState(null); 
     const [isCorrect, setIsCorrect] = useState(null);
     const [isSubmitted, setIsSubmitted] = useState(false);
-    const [timeLeft, setTimeLeft] = useState(300); 
+    const [timeLeft, setTimeLeft] = useState(3); 
     const [score, setScore] = useState(0);
     const [questionsAttempted, setQuestionsAttempted] = useState(0);
     const [quizOver, setQuizOver] = useState(false);
@@ -88,7 +89,7 @@ function App() {
     if (quizOver) {
         return (
             <div className="Score">
-                <Scoreboard score={score} totalQuestions={questionsAttempted} dummyScores={dummyScores} />
+                <BrandScan correctAns={score} accuracy={score / questionsAttempted * 100} mode={"Beginner"}/>
             </div>
         );
     }
