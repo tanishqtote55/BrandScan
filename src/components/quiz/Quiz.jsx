@@ -89,7 +89,7 @@ function App() {
     if (quizOver) {
         return (
             <div className="Score">
-                <BrandScan correctAns={score} accuracy={score / questionsAttempted * 100} mode={"Beginner"}/>
+                <BrandScan attemptedQs = { questionsAttempted } correctAns={score} accuracy={score / questionsAttempted * 100} mode={"Beginner"}/>
             </div>
         );
     }

@@ -3,7 +3,7 @@ import html2canvas from 'html2canvas';
 import { FaShareAlt } from 'react-icons/fa';
 import logo from '../../assets/PSF25.png';
 
-const BrandScan = ({ username, mode, correctAns, accuracy }) => {
+const BrandScan = ({ username, mode, correctAns, attemptedQs, accuracy }) => {
   const handleShare = () => {
     if (navigator.share) {
       navigator.share({
@@ -53,14 +53,20 @@ const BrandScan = ({ username, mode, correctAns, accuracy }) => {
           </div>
         </div>
 
+        <div className="grid grid-cols-2 gap-6">
         <div className="bg-gray-800 p-4 rounded-xl text-center shadow-lg">
+            <p className="font-bold text-lg text-purple-400">Attempted Qs</p>
+            <p className="text-gray-300 text-xl">{attemptedQs}</p>
+          </div>
+          <div className="bg-gray-800 p-4 rounded-xl text-center shadow-lg">
           <p className="font-bold text-lg text-purple-400">Accuracy</p>
           <p className="text-gray-300 text-2xl">{accuracy}%</p>
         </div>
+          </div>
       </div>
 
       <h3 className="text-center text-blue-400 font-semibold mt-10 mb-4 text-lg tracking-wider animate-fade-in">
-        VENTURING THE INNOVERSE
+        VOYAGE OF VISIONARIES
       </h3>
 
       <div className="flex justify-between items-center mt-8">
