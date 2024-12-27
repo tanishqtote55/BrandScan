@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import './QuizInstructions.css';
 
 const QuizInstructions = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const { mode } = location.state || {}; 
+  const { mode } = location.state || {};
+  const [darkMode, setDarkMode] = useState(false);
 
   const instructions = {
     beginner: [
@@ -27,18 +28,35 @@ const QuizInstructions = () => {
   };
 
   const handleStartQuiz = () => {
-    navigate(`/quiz/${mode}`); 
+    navigate(`/quiz/${mode}`);
+  };
+
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+    document.body.classList.toggle('dark-mode', !darkMode);
   };
 
   return (
-    <div className="instructions-container">
-      <h2>{mode === "beginner" ? "Beginner Mode Instructions" : "Advanced Mode Instructions"}</h2>
-      <ul>
+    <div className={`instructions-container ${darkMode ? 'dark' : ''}`}>
+      <div className="toggle-container">
+        <span className="toggle-label">Light</span>
+        <label className="toggle-switch">
+          <input type="checkbox" checked={darkMode} onChange={toggleDarkMode} />
+          <span className="slider"></span>
+        </label>
+        <span className="toggle-label">Dark</span>
+      </div>
+      <h2 className="instructions-heading">
+        {mode === "beginner" ? "Beginner Mode Instructions" : "Advanced Mode Instructions"}
+      </h2>
+      <ul className="instructions-list">
         {instructions[mode]?.map((instruction, index) => (
-          <li key={index}>{instruction}</li>
+          <li key={index} className="instruction-item fade-in">
+            {instruction}
+          </li>
         ))}
       </ul>
-      <button onClick={handleStartQuiz} className="start-button">START</button>
+      <button onClick={handleStartQuiz} className="start-button pulse-button">START</button>
     </div>
   );
 };
