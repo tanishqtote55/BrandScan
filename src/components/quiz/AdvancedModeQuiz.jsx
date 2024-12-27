@@ -3,6 +3,7 @@ import { logos } from "../../assets/logoData"; // Assuming your dataset is in lo
 import { dummyScores } from '../../assets/DummyData'; // Import dummyScores
 import Scoreboard from './Scoreboard'; // Import Scoreboard component
 import "./AdvancedModeQuiz.css";
+import BrandScan from "../share/UI";
 
 function App() {
     const [logoList, setLogoList] = useState([...logos]); // Copy of the logos to ensure no repeats
@@ -94,7 +95,8 @@ function App() {
     if (quizOver) {
         return (
             <div className="Score">
-                <Scoreboard score={score} totalQuestions={questionsAttempted} dummyScores={dummyScores} />
+                {/* <Scoreboard score={score} totalQuestions={questionsAttempted} dummyScores={dummyScores} /> */}
+                <BrandScan correctAns={score} accuracy={(score / questionsAttempted) * 100} mode={"Beginner"} />
             </div>
         );
     }
