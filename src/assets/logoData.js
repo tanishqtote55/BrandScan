@@ -1,121 +1,213 @@
+import img1 from './carlogo/img1.webp';
+import img2 from './carlogo/img2.webp';
+import img3 from './carlogo/img3.webp';
+import img4 from './carlogo/img4.webp';
+import img5 from './carlogo/img5.webp';
+import img6 from './carlogo/img6.webp';
+import img7 from './carlogo/img7.webp';
+import img8 from './carlogo/img8.webp';
+import img9 from './carlogo/img9.webp';
+import img10 from './carlogo/img10.webp';
+import img11 from './carlogo/img11.webp';
+import img12 from './carlogo/img12.webp';
+import img13 from './carlogo/img13.webp';
+import img14 from './carlogo/img14.webp';
+import img15 from './carlogo/img15.webp';
+import img16 from './carlogo/img16.webp';
+import img17 from './carlogo/img17.webp';
+import img18 from './carlogo/img18.webp';
+import img19 from './carlogo/img19.webp';
+import img20 from './carlogo/img20.webp';
+import img21 from './carlogo/img21.webp';
+import img22 from './carlogo/img22.webp';
+import img23 from './carlogo/img23.webp';
+import img24 from './carlogo/img24.webp';
+import img25 from './carlogo/img25.webp';
+import img26 from './carlogo/img26.webp';
+import img27 from './carlogo/img27.webp';
+import img28 from './carlogo/img28.webp';
+import img29 from './carlogo/img29.webp';
+import img30 from './carlogo/img30.webp';
+import img31 from './carlogo/img31.webp';
+import img32 from './carlogo/img32.webp';
+import img33 from './carlogo/img33.webp';
+import img34 from './carlogo/img34.webp';
+import img35 from './carlogo/img35.webp';
+import img36 from './carlogo/img36.webp';
+import img37 from './carlogo/img37.webp';
+import img38 from './carlogo/img38.webp';
+import img39 from './carlogo/img39.webp';
+import img40 from './carlogo/img40.webp';
+import img41 from './carlogo/img41.webp';
+import img42 from './carlogo/img42.webp';
+import img43 from './carlogo/img43.webp';
+import img44 from './carlogo/img44.webp';
+import img45 from './carlogo/img45.webp';
+import img46 from './carlogo/img46.webp';
+import img47 from './carlogo/img47.webp';
+import img48 from './carlogo/img48.webp';
+import img49 from './carlogo/img49.webp';
+import img50 from './carlogo/img50.webp';
+import img51 from './carlogo/img51.webp';
+import img52 from './carlogo/img52.webp';
+import img53 from './carlogo/img53.webp';
+import img54 from './carlogo/img54.webp';
+import img55 from './carlogo/img55.webp';
+import img56 from './carlogo/img56.webp';
+import img57 from './carlogo/img57.webp';
+import img58 from './carlogo/img58.webp';
+import img59 from './carlogo/img59.webp';
+import img60 from './carlogo/img60.webp';
+import img61 from './carlogo/img61.webp';
+import img62 from './carlogo/img62.webp';
+import img63 from './carlogo/img63.webp';
+import img64 from './carlogo/img64.webp';
+import img65 from './carlogo/img65.webp';
+import img66 from './carlogo/img66.webp';
+import img67 from './carlogo/img67.webp';
+import img68 from './carlogo/img68.webp';
+import img69 from './carlogo/img69.webp';
+import img70 from './carlogo/img70.webp';
+import img71 from './carlogo/img71.webp';
+import img72 from './carlogo/img72.webp';
+import img73 from './carlogo/img73.webp';
+import img74 from './carlogo/img74.webp';
+import img75 from './carlogo/img75.webp';
+import img76 from './carlogo/img76.webp';
+import img77 from './carlogo/img77.webp';
+import img78 from './carlogo/img78.webp';
+import img79 from './carlogo/img79.webp';
+import img80 from './carlogo/img80.webp';
+import img81 from './carlogo/img81.webp';
+import img82 from './carlogo/img82.webp';
+import img83 from './carlogo/img83.webp';
+import img84 from './carlogo/img84.webp';
+import img85 from './carlogo/img85.webp';
+import img86 from './carlogo/img86.webp';
+import img87 from './carlogo/img87.webp';
+import img88 from './carlogo/img88.webp';
+import img89 from './carlogo/img89.webp';
+import img90 from './carlogo/img90.webp';
+import img91 from './carlogo/img91.webp';
+import img92 from './carlogo/img92.webp';
+import img93 from './carlogo/img93.webp';
+import img94 from './carlogo/img94.webp';
+import img95 from './carlogo/img95.webp';
+import img96 from './carlogo/img96.webp';
+import img97 from './carlogo/img97.webp';
+import img98 from './carlogo/img98.webp';
+import img99 from './carlogo/img99.webp';
+import img100 from './carlogo/img100.webp';
+import img101 from './carlogo/img101.webp';
+import img102 from './carlogo/img102.webp';
+import img103 from './carlogo/img103.webp';
+import img104 from './carlogo/img104.webp';
+import img105 from './carlogo/img105.webp';
+
 export const logos = [
-    //     { name: "Apple", logo: "https://w7.pngwing.com/pngs/664/673/png-transparent-apple-logo-iphone-computer-apple-logo-company-heart-logo-thumbnail.png" },
-    //     { name: "Microsoft", logo: "https://banner2.cleanpng.com/20180320/dwq/av0pnqwyw.webp" },
-    //     { name: "Amazon", logo: "https://w7.pngwing.com/pngs/732/34/png-transparent-logo-amazon-com-brand-flipkart-others-text-orange-logo.png" },
-    //     { name: "Google", logo: "https://w7.pngwing.com/pngs/989/129/png-transparent-google-logo-google-search-meng-meng-company-text-logo-thumbnail.png" },
-    //     { name: "Facebook", logo: "https://png.pngtree.com/png-vector/20221018/ourmid/pngtree-facebook-social-media-icon-png-image_6315968.png" },
-    //     { name: "BMW", logo: "https://w7.pngwing.com/pngs/365/887/png-transparent-bmw-i3-car-bmw-i8-bmw-logo-emblem-trademark-logo-thumbnail.png" },
-    //     { name: "Mercedes", logo: "https://banner2.cleanpng.com/20171203/618/av2q4pytp.webp" },
-    //     { name: "Audi", logo: "https://uploads.audi-mediacenter.com/system/production/media/1282/images/bde751ee18fe149036c6b47d7595f6784f8901f8/AL090142_web_2880.jpg?1698171883" },
-    //     { name: "Volskwagen", logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJkrL0osmFNtQJ78o-cvEcWhYUc1KYL1su0w&s" },
-    //     { name: "Honda", logo: "https://seeklogo.com/images/H/honda-logo-CA469AE008-seeklogo.com.png" },
-    //     { name: "Tesla", logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQp_84MJBaStrWovkHYsJezW1gJlnV-hd8F-g&s" },
-    //     { name: "Cheverolet", logo: "https://banner2.cleanpng.com/20180328/xkw/avj776jdf.webp" },
-    //     { name: "Toyota", logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxsz9ffvEWJyv_arj_mb6J1sQIAaFUVPgxMA&s" },
-    //     // Add more logos as needed
-    { name: "acura", logo:"src/assets/carlogo/img1.webp" },
-    { name: "aiways", logo:"src/assets/carlogo/img2.webp" },
-    { name: "alpine", logo:"src/assets/carlogo/img3.webp" },
-    { name: "apollo", logo:"src/assets/carlogo/img4.webp" },
-    { name: "arcfox", logo:"src/assets/carlogo/img5.webp" },
-    { name: "arrinera", logo:"src/assets/carlogo/img6.webp" },
-    { name: "aspark", logo:"src/assets/carlogo/img7.webp" },
-    { name: "audi", logo:"src/assets/carlogo/img8.webp" },
-    { name: "autobacs", logo:"src/assets/carlogo/img9.webp" },
-    { name: "bac", logo:"src/assets/carlogo/img10.webp" },
-    { name: "baic", logo:"src/assets/carlogo/img11.webp" },
-    { name: "baojun", logo:"src/assets/carlogo/img12.webp" },
-    { name: "bentley", logo:"src/assets/carlogo/img13.webp" },
-    { name: "bitter", logo:"src/assets/carlogo/img14.webp" },
-    { name: "brabus", logo:"src/assets/carlogo/img15.webp" },
-    { name: "brammo", logo:"src/assets/carlogo/img16.webp" },
-    { name: "brilliance", logo:"src/assets/carlogo/img17.webp" },
-    { name: "buick", logo:"src/assets/carlogo/img18.webp" },
-    { name: "byton", logo:"src/assets/carlogo/img19.webp" },
-    { name: "cadillac", logo:"src/assets/carlogo/img20.webp" },
-    { name: "caparo", logo:"src/assets/carlogo/img21.webp" },
-    { name: "changan", logo:"src/assets/carlogo/img22.webp" },
-    { name: "chery", logo:"src/assets/carlogo/img23.webp" },
-    { name: "chevrolet", logo:"src/assets/carlogo/img24.webp" },
-    { name: "chrysler", logo:"src/assets/carlogo/img25.webp" },
-    { name: "citroen", logo:"src/assets/carlogo/img26.webp" },
-    { name: "corvette", logo:"src/assets/carlogo/img27.webp" },
-    { name: "de-tomaso", logo:"src/assets/carlogo/img28.webp" },
-    { name: "delorean", logo:"src/assets/carlogo/img29.webp" },
-    { name: "dodge-viper", logo:"src/assets/carlogo/img30.webp" },
-    { name: "ds", logo:"src/assets/carlogo/img31.webp" },
-    { name: "edag", logo:"src/assets/carlogo/img32.webp" },
-    { name: "elemental", logo:"src/assets/carlogo/img33.webp" },
-    { name: "force", logo:"src/assets/carlogo/img34.webp" },
-    { name: "ford-mustang", logo:"src/assets/carlogo/img35.webp" },
-    { name: "fso", logo:"src/assets/carlogo/img36.webp" },
-    { name: "gac", logo:"src/assets/carlogo/img37.webp" },
-    { name: "gaz", logo:"src/assets/carlogo/img38.webp" },
-    { name: "genesis", logo:"src/assets/carlogo/img39.webp" },
-    { name: "hiphi", logo:"src/assets/carlogo/img40.webp" },
-    { name: "honda", logo:"src/assets/carlogo/img41.webp" },
-    { name: "hongqi", logo:"src/assets/carlogo/img42.webp" },
-    { name: "hsv", logo:"src/assets/carlogo/img43.webp" },
-    { name: "hyundai", logo:"src/assets/carlogo/img44.webp" },
-    { name: "infiniti", logo:"src/assets/carlogo/img45.webp" },
-    { name: "jaguar", logo:"src/assets/carlogo/img46.webp" },
-    { name: "jetta", logo:"src/assets/carlogo/img47.webp" },
-    { name: "karlmann-king", logo:"src/assets/carlogo/img48.webp" },
-    { name: "koenigsegg", logo:"src/assets/carlogo/img49.webp" },
-    { name: "lamborghini", logo:"src/assets/carlogo/img50.webp" },
-    { name: "landwind", logo:"src/assets/carlogo/img51.webp" },
-    { name: "laraki", logo:"src/assets/carlogo/img52.webp" },
-    { name: "leapmotor", logo:"src/assets/carlogo/img53.webp" },
-    { name: "lexus", logo:"src/assets/carlogo/img54.webp" },
-    { name: "lincoln", logo:"src/assets/carlogo/img55.webp" },
-    { name: "lordstown", logo:"src/assets/carlogo/img56.webp" },
-    { name: "luxgen", logo:"src/assets/carlogo/img57.webp" },
-    { name: "mahindra", logo:"src/assets/carlogo/img58.webp" },
-    { name: "maserati", logo:"src/assets/carlogo/img59.webp" },
-    { name: "maybach", logo:"src/assets/carlogo/img60.webp" },
-    { name: "mazda", logo:"src/assets/carlogo/img61.webp" },
-    { name: "mercedes-benz", logo:"src/assets/carlogo/img62.webp" },
-    { name: "mitsubishi", logo:"src/assets/carlogo/img63.webp" },
-    { name: "mitsuoka", logo:"src/assets/carlogo/img64.webp" },
-    { name: "nio", logo:"src/assets/carlogo/img65.webp" },
-    { name: "nissan-gt-r", logo:"src/assets/carlogo/img66.webp" },
-    { name: "pagani", logo:"src/assets/carlogo/img67.webp" },
-    { name: "perodua", logo:"src/assets/carlogo/img68.webp" },
-    { name: "peugeot", logo:"src/assets/carlogo/img69.webp" },
-    { name: "porsche", logo:"src/assets/carlogo/img70.webp" },
-    { name: "proton", logo:"src/assets/carlogo/img71.webp" },
-    { name: "qoros", logo:"src/assets/carlogo/img72.webp" },
-    { name: "renault", logo:"src/assets/carlogo/img73.webp" },
-    { name: "rezvani", logo:"src/assets/carlogo/img74.webp" },
-    { name: "rimac", logo:"src/assets/carlogo/img75.webp" },
-    { name: "rivian", logo:"src/assets/carlogo/img76.webp" },
-    { name: "roewe", logo:"src/assets/carlogo/img77.webp" },
-    { name: "saipa", logo:"src/assets/carlogo/img78.webp" },
-    { name: "skoda", logo:"src/assets/carlogo/img79.webp" },
-    { name: "soueast", logo:"src/assets/carlogo/img80.webp" },
-    { name: "spirra", logo:"src/assets/carlogo/img81.webp" },
-    { name: "ssangyong", logo:"src/assets/carlogo/img82.webp" },
-    { name: "ssc", logo:"src/assets/carlogo/img83.webp" },
-    { name: "subaru", logo:"src/assets/carlogo/img84.webp" },
-    { name: "suzuki", logo:"src/assets/carlogo/img85.webp" },
-    { name: "tata", logo:"src/assets/carlogo/img86.webp" },
-    { name: "tesla", logo:"src/assets/carlogo/img87.webp" },
-    { name: "toyota-alphard", logo:"src/assets/carlogo/img88.webp" },
-    { name: "toyota-century", logo:"src/assets/carlogo/img89.webp" },
-    { name: "toyota-crown", logo:"src/assets/carlogo/img90.webp" },
-    { name: "toyota", logo:"src/assets/carlogo/img91.webp" },
-    { name: "tramontana", logo:"src/assets/carlogo/img92.webp" },
-    { name: "uaz", logo:"src/assets/carlogo/img93.webp" },
-    { name: "vauxhall", logo:"src/assets/carlogo/img94.webp" },
-    { name: "venturi", logo:"src/assets/carlogo/img95.webp" },
-    { name: "venucia", logo:"src/assets/carlogo/img96.webp" },
-    { name: "volkswagen", logo:"src/assets/carlogo/img97.webp" },
-    { name: "w-motors", logo:"src/assets/carlogo/img98.webp" },
-    { name: "weltmeister", logo:"src/assets/carlogo/img99.webp" },
-    { name: "wey", logo:"src/assets/carlogo/img100.webp" },
-    { name: "wiesmann", logo:"src/assets/carlogo/img101.webp" },
-    { name: "yulon", logo:"src/assets/carlogo/img102.webp" },
-    { name: "zarooq", logo:"src/assets/carlogo/img103.webp" },
-    { name: "zeekr", logo:"src/assets/carlogo/img104.webp" },
-    { name: "zenos", logo:"src/assets/carlogo/img105.webp" }
-    ];
+    { name: "acura", logo: img1 },
+    { name: "aiways", logo: img2 },
+    { name: "alpine", logo: img3 },
+    { name: "apollo", logo: img4 },
+    { name: "arcfox", logo: img5 },
+    { name: "arrinera", logo: img6 },
+    { name: "aspark", logo: img7 },
+    { name: "audi", logo: img8 },
+    { name: "autobacs", logo: img9 },
+    { name: "bac", logo: img10 },
+    { name: "baic", logo: img11 },
+    { name: "baojun", logo: img12 },
+    { name: "bentley", logo: img13 },
+    { name: "bitter", logo: img14 },
+    { name: "brabus", logo: img15 },
+    { name: "brammo", logo: img16 },
+    { name: "brilliance", logo: img17 },
+    { name: "buick", logo: img18 },
+    { name: "byton", logo: img19 },
+    { name: "cadillac", logo: img20 },
+    { name: "caparo", logo: img21 },
+    { name: "changan", logo: img22 },
+    { name: "chery", logo: img23 },
+    { name: "chevrolet", logo: img24 },
+    { name: "chrysler", logo: img25 },
+    { name: "citroen", logo: img26 },
+    { name: "corvette", logo: img27 },
+    { name: "de-tomaso", logo: img28 },
+    { name: "delorean", logo: img29 },
+    { name: "dodge-viper", logo: img30 },
+    { name: "ds", logo: img31 },
+    { name: "edag", logo: img32 },
+    { name: "elemental", logo: img33 },
+    { name: "force", logo: img34 },
+    { name: "ford-mustang", logo: img35 },
+    { name: "fso", logo: img36 },
+    { name: "gac", logo: img37 },
+    { name: "gaz", logo: img38 },
+    { name: "genesis", logo: img39 },
+    { name: "hiphi", logo: img40 },
+    { name: "honda", logo: img41 },
+    { name: "hongqi", logo: img42 },
+    { name: "hsv", logo: img43 },
+    { name: "hyundai", logo: img44 },
+    { name: "infiniti", logo: img45 },
+    { name: "jaguar", logo: img46 },
+    { name: "jetta", logo: img47 },
+    { name: "karlmann-king", logo: img48 },
+    { name: "koenigsegg", logo: img49 },
+    { name: "lamborghini", logo: img50 },
+    { name: "landwind", logo: img51 },
+    { name: "laraki", logo: img52 },
+    { name: "leapmotor", logo: img53 },
+    { name: "lexus", logo: img54 },
+    { name: "lincoln", logo: img55 },
+    { name: "lordstown", logo: img56 },
+    { name: "luxgen", logo: img57 },
+    { name: "mahindra", logo: img58 },
+    { name: "maserati", logo: img59 },
+    { name: "maybach", logo: img60 },
+    { name: "mazda", logo: img61 },
+    { name: "mercedes-benz", logo: img62 },
+    { name: "mitsubishi", logo: img63 },
+    { name: "mitsuoka", logo: img64 },
+    { name: "nio", logo: img65 },
+    { name: "nissan", logo: img66 },
+    { name: "opel", logo: img67 },
+    { name: "peugeot", logo: img68 },
+    { name: "polestar", logo: img69 },
+    { name: "porsche", logo: img70 },
+    { name: "ram", logo: img71 },
+    { name: "ravon", logo: img72 },
+    { name: "renault", logo: img73 },
+    { name: "rolls-royce", logo: img74 },
+    { name: "saab", logo: img75 },
+    { name: "seat", logo: img76 },
+    { name: "spyker", logo: img77 },
+    { name: "subaru", logo: img78 },
+    { name: "tata", logo: img79 },
+    { name: "togg", logo: img80 },
+    { name: "toyota", logo: img81 },
+    { name: "vinfast", logo: img82 },
+    { name: "volkswagen", logo: img83 },
+    { name: "volvo", logo: img84 },
+    { name: "wuling", logo: img85 },
+    { name: "zenvo", logo: img86 },
+    { name: "yugo", logo: img87 },
+    { name: "suzuki", logo: img88 },
+    { name: "mitsubishi-motors", logo: img89 },
+    { name: "aston-martin", logo: img90 },
+    { name: "pininfarina", logo: img91 },
+    { name: "singer", logo: img92 },
+    { name: "valkyrie", logo: img93 },
+    { name: "osca", logo: img94 },
+    { name: "byd", logo: img95 },
+    { name: "proton", logo: img96 },
+    { name: "mclaren", logo: img97 },
+    { name: "saleen", logo: img98 },
+    { name: "shelby", logo: img99 },
+    { name: "trumpchi", logo: img100 },
+    { name: "daewoo", logo: img101 },
+    { name: "fiat", logo: img102 },
+    { name: "ram-truck", logo: img103 },
+    { name: "great-wall", logo: img104 },
+    { name: "mg", logo: img105 }
+];

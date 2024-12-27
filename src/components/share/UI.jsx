@@ -60,7 +60,7 @@ const BrandScan = ({ username, mode, correctAns, accuracy }) => {
       </div>
 
       <h3 className="text-center text-blue-400 font-semibold mt-10 mb-4 text-lg tracking-wider animate-fade-in">
-        VENTURING THE INNOVERSE
+        VOYAGE OF VISIONARIES
       </h3>
 
       <div className="flex justify-between items-center mt-8">
