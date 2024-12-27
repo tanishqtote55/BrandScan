@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from "react";
-import { logos } from "../../assets/logoData"; 
-import { dummyScores } from '../../assets/DummyData'; 
-import Scoreboard from './Scoreboard'; 
+import { logos } from "../../assets/logoData";
+import { dummyScores } from '../../assets/DummyData';
+import Scoreboard from './Scoreboard';
 import "./Quiz.css";
 import BrandScan from "../share/UI";
 
 function App() {
-    const [logoList, setLogoList] = useState([...logos]); 
-    const [currentLogo, setCurrentLogo] = useState({}); 
-    const [options, setOptions] = useState([]); 
-    const [selectedOption, setSelectedOption] = useState(null); 
+    const [logoList, setLogoList] = useState([...logos]);
+    const [currentLogo, setCurrentLogo] = useState({});
+    const [options, setOptions] = useState([]);
+    const [selectedOption, setSelectedOption] = useState(null);
     const [isCorrect, setIsCorrect] = useState(null);
     const [isSubmitted, setIsSubmitted] = useState(false);
-    const [timeLeft, setTimeLeft] = useState(3); 
+    const [timeLeft, setTimeLeft] = useState(300);
     const [score, setScore] = useState(0);
     const [questionsAttempted, setQuestionsAttempted] = useState(0);
     const [quizOver, setQuizOver] = useState(false);
@@ -28,13 +28,13 @@ function App() {
             }, 1000);
             return () => clearInterval(timerId);
         } else {
-            handleQuizSubmit(); 
+            handleQuizSubmit();
         }
     }, [timeLeft, quizOver]);
 
     const getNextLogo = () => {
         if (logoList.length === 0) {
-            handleQuizSubmit(); 
+            handleQuizSubmit();
             return;
         }
         const randomIndex = Math.floor(Math.random() * logoList.length);
@@ -43,16 +43,16 @@ function App() {
         setLogoList(newLogoList);
         setCurrentLogo(selectedLogo);
         setOptions(generateOptions(selectedLogo.name));
-        setSelectedOption(null); 
-        setIsCorrect(null); 
-        setIsSubmitted(false); 
+        setSelectedOption(null);
+        setIsCorrect(null);
+        setIsSubmitted(false);
     };
 
     const generateOptions = (correctName) => {
         const incorrectOptions = logos
             .filter((logo) => logo.name !== correctName)
             .sort(() => 0.5 - Math.random())
-            .slice(0, 3) 
+            .slice(0, 3)
             .map(logo => logo.name);
 
         const allOptions = [correctName, ...incorrectOptions];
@@ -62,7 +62,7 @@ function App() {
     const handleSubmit = () => {
         setQuestionsAttempted(questionsAttempted + 1);
         setIsSubmitted(true);
-        if (isCorrect) {
+        if (selectedOption === currentLogo.name) {
             setScore(score + 1);
         }
 
@@ -74,14 +74,10 @@ function App() {
     const handleOptionClick = (option) => {
         if (!isSubmitted) {
             setSelectedOption(option);
-            if (option === currentLogo.name) {
-                setIsCorrect(true);
-            } else {
-                setIsCorrect(false); 
-            }
+            setIsCorrect(option === currentLogo.name);
         }
     };
-    
+
     const handleQuizSubmit = () => {
         setQuizOver(true);
     };
@@ -104,18 +100,23 @@ function App() {
             </div>
             <div className="options-container">
                 {options.map((option, index) => (
-                    <button 
-                        key={index} 
-                        onClick={() => handleOptionClick(option)} 
-                        className={`option-button ${isSubmitted ? 
-                            (option === currentLogo.name ? 'correct' : selectedOption === option ? 'wrong' : '') : ''
-                        } ${selectedOption === option ? 'selected' : ''} ${isSubmitted && option !== currentLogo.name ? 'hidden' : ''}`}
+                    <button
+                        key={index}
+                        onClick={() => handleOptionClick(option)}
+                        className={`option-button ${
+                            selectedOption === option ? (isSubmitted ? (isCorrect ? 'correct' : 'wrong') : 'selected') : ''
+                        }`}
+                        disabled={isSubmitted}
                     >
                         {option}
                     </button>
                 ))}
             </div>
-            <button onClick={handleSubmit} className="next-button" disabled={!selectedOption || isSubmitted}>
+            <button
+                onClick={handleSubmit}
+                className="next-button"
+                disabled={!selectedOption || isSubmitted}
+            >
                 Next
             </button>
         </div>
