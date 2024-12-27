@@ -5,7 +5,7 @@ import AdvancedModeQuiz from './components/quiz/AdvancedModeQuiz'
 const App=()=> {
   return (
     <>
-      <Quiz/>
+      <AdvancedModeQuiz/>
     </>
   )
 }
