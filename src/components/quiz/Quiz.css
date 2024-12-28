@@ -1,6 +1,6 @@
 .App {
     text-align: center;
-    height: 95vh;
+    height: 90vh;
     max-width: 90vw;
     border-radius: 12px;
     padding: 20px;
@@ -165,7 +165,7 @@
     margin-top: 20px;
     padding: 10px 15px;
     font-size: 16px;
-    background-color: #b59dff;
+    background-color: #af96fd;
     color: white;
     border: none;
     border-radius: 6px;
@@ -174,7 +174,7 @@
 }
 
 .next-button:hover {
-    background-color: #835bf9;
+    background-color: #805fe5;
 }
 
 .next-button:disabled {
