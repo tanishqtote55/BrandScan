@@ -1,6 +1,6 @@
 export const data = [
     {
-      question: "src/assets/carlogo/img53.webp",
+      question: "Which device is required for the Internet connection?",
       option1: "Modem",
       option2: "Router",
       option3: "LAN Cable",
