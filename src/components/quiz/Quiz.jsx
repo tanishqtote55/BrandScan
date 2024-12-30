@@ -1,126 +1,105 @@
-import React, { useState, useEffect } from "react";
-import { logos } from "../../assets/logoData";
-import { dummyScores } from '../../assets/DummyData';
-import Scoreboard from './Scoreboard';
-import "./Quiz.css";
-import BrandScan from "../share/UI";
+import React from 'react';
+import html2canvas from 'html2canvas';
+import { FaShareAlt } from 'react-icons/fa';
+import { MdDownload } from 'react-icons/md';
+import logo from '../../assets/PSF25.png';
 
-function App() {
-    const [logoList, setLogoList] = useState([...logos]);
-    const [currentLogo, setCurrentLogo] = useState({});
-    const [options, setOptions] = useState([]);
-    const [selectedOption, setSelectedOption] = useState(null);
-    const [isCorrect, setIsCorrect] = useState(null);
-    const [isSubmitted, setIsSubmitted] = useState(false);
-    const [timeLeft, setTimeLeft] = useState(300);
-    const [score, setScore] = useState(0);
-    const [questionsAttempted, setQuestionsAttempted] = useState(0);
-    const [quizOver, setQuizOver] = useState(false);
+const BrandScan = ({ username, mode, correctAns, attemptedQs, accuracy }) => {
 
-    useEffect(() => {
-        getNextLogo();
-    }, []);
+  const handleShare = async () => {
+  const element = document.getElementById('brandscan-container');
+  try {
+    const canvas = await html2canvas(element);
+    canvas.toBlob(async (blob) => {
+      if (navigator.share) {
+        const file = new File([blob], 'BrandScan.png', { type: 'image/png' });
+        await navigator.share({
+          title: 'BrandScan Stats',
+          text: `Check out my BrandScan stats! Play your game now: ${window.location.href}`,
+          files: [file],
+        });
+      } else {
+        alert('Share functionality is not supported in this browser.');
+      }
+    });
+  } catch (err) {
+    console.error('Error sharing:', err);
+  }
+};
 
-    useEffect(() => {
-        if (!quizOver && timeLeft > 0) {
-            const timerId = setInterval(() => {
-                setTimeLeft(timeLeft - 1);
-            }, 1000);
-            return () => clearInterval(timerId);
-        } else {
-            handleQuizSubmit();
-        }
-    }, [timeLeft, quizOver]);
 
-    const getNextLogo = () => {
-        if (logoList.length === 0) {
-            handleQuizSubmit();
-            return;
-        }
-        const randomIndex = Math.floor(Math.random() * logoList.length);
-        const selectedLogo = logoList[randomIndex];
-        const newLogoList = logoList.filter((_, index) => index !== randomIndex);
-        setLogoList(newLogoList);
-        setCurrentLogo(selectedLogo);
-        setOptions(generateOptions(selectedLogo.name));
-        setSelectedOption(null);
-        setIsCorrect(null);
-        setIsSubmitted(false);
-    };
+  const handleDownload = () => {
+    const element = document.getElementById('brandscan-container');
+    html2canvas(element).then((canvas) => {
+      const link = document.createElement('a');
+      link.download = 'BrandScan.png';
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+    });
+  };
 
-    const generateOptions = (correctName) => {
-        const incorrectOptions = logos
-            .filter((logo) => logo.name !== correctName)
-            .sort(() => 0.5 - Math.random())
-            .slice(0, 3)
-            .map(logo => logo.name);
+  return (
+    <div
+      id="brandscan-container"
+      className="bg-gradient-to-b from-black via-gray-900 to-gray-800 text-white p-6 shadow-2xl max-w-md mx-auto font-sans transform transition-all duration-500"
+      style={{ maxWidth: '100%', margin: '0 auto' }}
+    >
+      <img
+        src={logo}
+        alt="Pune Startup Fest"
+        className="mx-auto w-28 mb-6 animate-pulse"
+      />
 
-        const allOptions = [correctName, ...incorrectOptions];
-        return allOptions.sort(() => 0.5 - Math.random());
-    };
+      <h2 className="text-2xl font-extrabold text-center mb-3 font-serif tracking-wider">
+        {username}
+      </h2>
 
-    const handleSubmit = () => {
-        setQuestionsAttempted(questionsAttempted + 1);
-        setIsSubmitted(true);
-        if (selectedOption === currentLogo.name) {
-            setScore(score + 1);
-        }
+      <p className="text-center text-purple-400 text-3xl mb-8 font-bold tracking-wide uppercase">
+        BrandScan
+      </p>
 
-        setTimeout(() => {
-            getNextLogo();
-        }, 500);
-    };
-
-    const handleOptionClick = (option) => {
-        if (!isSubmitted) {
-            setSelectedOption(option);
-            setIsCorrect(option === currentLogo.name);
-        }
-    };
-
-    const handleQuizSubmit = () => {
-        setQuizOver(true);
-    };
-
-    if (quizOver) {
-        return (
-            <div className="Score">
-                <BrandScan attemptedQs = { questionsAttempted } correctAns={score} accuracy={score / questionsAttempted * 100} mode={"Beginner"}/>
-            </div>
-        );
-    }
-
-    return (
-        <div className="App">
-            <div className="timer">
-                Time Left: {Math.floor(timeLeft / 60)}:{timeLeft % 60 < 10 ? "0" : ""}{timeLeft % 60}
-            </div>
-            <div className="logo-container">
-                <img src={currentLogo.logo} alt="Company Logo" className="logo-image" />
-            </div>
-            <div className="options-container">
-                {options.map((option, index) => (
-                    <button
-                        key={index}
-                        onClick={() => handleOptionClick(option)}
-                        className={`option-button ${
-                            selectedOption === option ? (isSubmitted ? (isCorrect ? 'correct' : 'wrong') : 'selected') : ''
-                        }`}
-                        disabled={isSubmitted}
-                    >
-                        {option}
-                    </button>
-                ))}
-            </div>
-            <button
-                onClick={handleSubmit}
-                className="next-button"
-                disabled={!selectedOption || isSubmitted}
-            >
-                Next
-            </button>
+      <div className="space-y-6">
+        <div className="bg-gray-800 p-4 rounded-xl text-center shadow-lg">
+          <p className="font-bold text-lg text-purple-400">Mode Played</p>
+          <p className="text-gray-300 text-xl">{mode}</p>
         </div>
-    );
-}
 
-export default App;
+        <div className="grid grid-cols-2 gap-6">
+          <div className="bg-gray-800 p-4 rounded-xl text-center shadow-lg">
+            <p className="font-bold text-lg text-purple-400">Attempted Qs</p>
+            <p className="text-gray-300 text-xl">{attemptedQs}</p>
+          </div>
+          <div className="bg-gray-800 p-4 rounded-xl text-center shadow-lg">
+            <p className="font-bold text-lg text-purple-400">Correct Answers</p>
+            <p className="text-gray-300 text-xl">{correctAns}</p>
+          </div>
+        </div>
+
+        <div className="bg-gray-800 p-4 rounded-xl text-center shadow-lg">
+          <p className="font-bold text-lg text-purple-400">Accuracy</p>
+          <p className="text-gray-300 text-2xl">{accuracy}%</p>
+        </div>
+      </div>
+
+      <h3 className="text-center text-blue-400 font-semibold mt-10 mb-4 text-xl tracking-wider animate-none">
+        VOYAGE OF VISIONARIES
+      </h3>
+
+      <div className="flex justify-between items-center mt-8">
+        <FaShareAlt
+          className="text-purple-500 cursor-pointer text-3xl transform hover:scale-110 transition duration-300"
+          onClick={handleShare}
+        />
+        <button
+          className="bg-purple-600 text-white py-3 px-6 rounded-xl font-semibold text-lg shadow-md transform hover:bg-purple-700 hover:scale-105 transition duration-300"
+          onClick={handleDownload}
+        >
+          <MdDownload className="inline-block mr-2 text-2xl" />
+          Download
+        </button>
+      </div>
+    </div>
+  );
+};
+
+export default BrandScan;
