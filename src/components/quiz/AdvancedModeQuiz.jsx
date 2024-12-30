@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { logos } from "../../assets/logoData";
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar'; 
 import "react-circular-progressbar/dist/styles.css";
@@ -18,7 +18,7 @@ function App() {
     const [options, setOptions] = useState([]);
     const [isCorrect, setIsCorrect] = useState(null);
     const [isSubmitted, setIsSubmitted] = useState(false);
-    const [timeLeft, setTimeLeft] = useState(3); 
+    const [timeLeft, setTimeLeft] = useState(300); 
     const [timeUsed, setTimeUsed] = useState(0);
     const [score, setScore] = useState(0);
     const [questionsAttempted, setQuestionsAttempted] = useState(0); 

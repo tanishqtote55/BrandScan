@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { logos } from "../../assets/logoData";
 import "./Quiz.css";
 import BrandScan from "../share/UI";
