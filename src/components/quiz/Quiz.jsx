@@ -17,7 +17,7 @@ function App() {
   const [selectedOption, setSelectedOption] = useState(null);
   const [isCorrect, setIsCorrect] = useState(null);
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [timeLeft, setTimeLeft] = useState(300);
+  const [timeLeft, setTimeLeft] = useState(3);
   const [score, setScore] = useState(0);
   const [questionsAttempted, setQuestionsAttempted] = useState(0);
   const [quizOver, setQuizOver] = useState(false);
