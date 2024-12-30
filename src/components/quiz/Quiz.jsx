@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { logos } from "../../assets/logoData";
 import "./Quiz.css";
 import BrandScan from "../share/UI";
@@ -17,7 +17,7 @@ function App() {
   const [selectedOption, setSelectedOption] = useState(null);
   const [isCorrect, setIsCorrect] = useState(null);
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [timeLeft, setTimeLeft] = useState(3);
+  const [timeLeft, setTimeLeft] = useState(300);
   const [score, setScore] = useState(0);
   const [questionsAttempted, setQuestionsAttempted] = useState(0);
   const [quizOver, setQuizOver] = useState(false);
