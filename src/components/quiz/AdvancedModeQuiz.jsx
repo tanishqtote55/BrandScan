@@ -1,11 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
-import { logos } from "../../assets/logoData"; // Assuming your dataset is in logoData
-import { dummyScores } from '../../assets/DummyData'; // Import dummyScores
-import Scoreboard from './Scoreboard'; // Import Scoreboard component
+import { logos } from "../../assets/logoData";
+import { CircularProgressbar, buildStyles } from 'react-circular-progressbar'; 
+import "react-circular-progressbar/dist/styles.css";
 import "./AdvancedModeQuiz.css";
 import BrandScan from "../share/UI";
 
-// Importing sounds
 import correctAnswerSound from "../../assets/sounds/correctbuttonclick.wav";
 import buttonClickSound from "../../assets/sounds/anybuttonclick.wav";
 import finalScoreSound from "../../assets/sounds/score_display.wav";
@@ -13,16 +12,16 @@ import backgroundMusic from "../../assets/sounds/bgm.wav";
 import errorSound from "../../assets/sounds/errorSound.wav";
 
 function App() {
-    const [logoList, setLogoList] = useState([...logos]); // Copy of the logos to ensure no repeats
+    const [logoList, setLogoList] = useState([...logos]);
     const [currentLogo, setCurrentLogo] = useState({});
     const [guess, setGuess] = useState("");
     const [options, setOptions] = useState([]);
     const [isCorrect, setIsCorrect] = useState(null);
     const [isSubmitted, setIsSubmitted] = useState(false);
-    const [timeLeft, setTimeLeft] = useState(300); // 5 minutes in seconds
-    const [timeUsed, setTimeUsed] = useState(0); // Time spent
+    const [timeLeft, setTimeLeft] = useState(3); 
+    const [timeUsed, setTimeUsed] = useState(0);
     const [score, setScore] = useState(0);
-    const [questionsAttempted, setQuestionsAttempted] = useState(0); // Track total attempts
+    const [questionsAttempted, setQuestionsAttempted] = useState(0); 
     const [quizOver, setQuizOver] = useState(false);
 
     const bgmRef = useRef(null);
@@ -129,7 +128,7 @@ function App() {
     if (quizOver) {
         return (
             <div className="Score">
-                <BrandScan correctAns={score} accuracy={(score / questionsAttempted) * 100} mode={"Advanced"} />
+                <BrandScan correctAns={score} accuracy={(score / questionsAttempted) * 100} mode={"Advanced"} attemptedQs={questionsAttempted}/>
             </div>
         );
     }
@@ -137,8 +136,18 @@ function App() {
     return (
         <div className="App">
             <div className="timer">
-                Time Left: {Math.floor(timeLeft / 60)}:{timeLeft % 60 < 10 ? "0" : ""}{timeLeft % 60}
+                <CircularProgressbar
+                    value={(timeLeft / 300) * 100}
+                    text={`${Math.floor(timeLeft / 60)}:${timeLeft % 60 < 10 ? "0" : ""}${timeLeft % 60}`}
+                    styles={buildStyles({
+                        textColor: "black",
+                        pathColor: timeLeft > 30 ? "green" : "red",
+                        trailColor: "#d6d6d6",
+                        strokeWidth: 10,
+                    })}
+                />
             </div>
+
             <div className="logo-container">
                 <img src={currentLogo.logo} alt="Company Logo" className="logo-image" />
             </div>

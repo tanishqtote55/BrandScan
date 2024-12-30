@@ -30,14 +30,14 @@ const BrandScan = ({ username, mode, correctAns, attemptedQs, accuracy }) => {
   return (
     <div
       id="brandscan-container"
-      className="scale-75 bg-gradient-to-br from-purple-800 via-indigo-900 to-black text-white p-8 shadow-2xl rounded-3xl max-w-lg mx-auto font-sans transform transition-all duration-500 hover:scale-105 hover:shadow-purple-600"
+      className="scale-75 bg-gradient-to-br from-purple-800 via-indigo-900 to-black text-white p-8 shadow-2xl rounded-3xl max-w-lg mx-auto font-sans transform transition-all duration-500 hover:shadow-purple-600"
       style={{ maxWidth: '100%', margin: '0 auto' }}
     >
       {/* Logo */}
       <img
         src={logo}
         alt="Pune Startup Fest"
-        className="mx-auto w-32 mb-8 animate-bounce"
+        className="mx-auto w-32 mb-8 animate-pulse"
       />
 
       {/* Username */}
@@ -78,7 +78,7 @@ const BrandScan = ({ username, mode, correctAns, attemptedQs, accuracy }) => {
       </div>
 
       {/* Vision Statement */}
-      <h3 className="text-center text-purple-400 font-semibold mt-10 mb-6 text-lg tracking-wide animate-pulse">
+      <h3 className="text-center text-purple-400 font-semibold mt-10 mb-6 text-2xl tracking-wide">
         Voyage of Visionaries
       </h3>
 
