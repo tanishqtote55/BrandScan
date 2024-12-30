@@ -1,9 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { logos } from "../../assets/logoData"; // Assuming your dataset is in logoData
 import { dummyScores } from '../../assets/DummyData'; // Import dummyScores
 import Scoreboard from './Scoreboard'; // Import Scoreboard component
 import "./AdvancedModeQuiz.css";
 import BrandScan from "../share/UI";
+
+// Importing sounds
+import correctAnswerSound from "../../assets/sounds/correctbuttonclick.wav";
+import buttonClickSound from "../../assets/sounds/anybuttonclick.wav";
+import finalScoreSound from "../../assets/sounds/score_display.wav";
+import backgroundMusic from "../../assets/sounds/bgm.wav";
+import errorSound from "../../assets/sounds/errorSound.wav";
 
 function App() {
     const [logoList, setLogoList] = useState([...logos]); // Copy of the logos to ensure no repeats
@@ -12,11 +19,32 @@ function App() {
     const [options, setOptions] = useState([]);
     const [isCorrect, setIsCorrect] = useState(null);
     const [isSubmitted, setIsSubmitted] = useState(false);
-    const [timeLeft, setTimeLeft] = useState(300); // 1 minute in seconds
+    const [timeLeft, setTimeLeft] = useState(300); // 5 minutes in seconds
     const [timeUsed, setTimeUsed] = useState(0); // Time spent
     const [score, setScore] = useState(0);
     const [questionsAttempted, setQuestionsAttempted] = useState(0); // Track total attempts
     const [quizOver, setQuizOver] = useState(false);
+
+    const bgmRef = useRef(null);
+
+    const playSound = (audioFile) => {
+        const audio = new Audio(audioFile);
+        audio.play();
+    };
+
+    useEffect(() => {
+        bgmRef.current = new Audio(backgroundMusic);
+        bgmRef.current.loop = true;
+        bgmRef.current.volume = 0.5;
+        bgmRef.current.play();
+
+        return () => {
+            if (bgmRef.current) {
+                bgmRef.current.pause();
+                bgmRef.current = null;
+            }
+        };
+    }, []);
 
     useEffect(() => {
         getNextLogo();
@@ -26,17 +54,17 @@ function App() {
         if (!quizOver && timeLeft > 0) {
             const timerId = setInterval(() => {
                 setTimeLeft(timeLeft - 1);
-                setTimeUsed(timeUsed + 1); // Track time used
+                setTimeUsed(timeUsed + 1); 
             }, 1000);
             return () => clearInterval(timerId);
         } else {
-            handleQuizSubmit(); // Automatically submit quiz when time runs out
+            handleQuizSubmit();
         }
     }, [timeLeft, timeUsed, quizOver]);
 
     const getNextLogo = () => {
         if (logoList.length === 0) {
-            handleQuizSubmit(); // Submit if no logos left
+            handleQuizSubmit(); 
             return;
         }
         const randomIndex = Math.floor(Math.random() * logoList.length);
@@ -45,8 +73,8 @@ function App() {
         setLogoList(newLogoList);
         setCurrentLogo(selectedLogo);
         setGuess("");
-        setIsCorrect(null); // Reset correct/wrong state for the new question
-        setIsSubmitted(false); // Reset submission state for the next question
+        setIsCorrect(null); 
+        setIsSubmitted(false);
     };
 
     const handleSearch = (e) => {
@@ -66,14 +94,17 @@ function App() {
 
     const handleSubmit = () => {
         setQuestionsAttempted(questionsAttempted + 1);
+        playSound(buttonClickSound);
 
         if (guess.toLowerCase() === currentLogo.name.toLowerCase()) {
             setIsCorrect(true);
             setScore(score + 1);
+            playSound(correctAnswerSound);
             setIsSubmitted(true);
-            getNextLogo(); // Move to the next logo
+            getNextLogo(); 
         } else {
             setIsCorrect(false);
+            playSound(errorSound);
             setIsSubmitted(true);
             setTimeout(() => {
                 getNextLogo();
@@ -83,6 +114,7 @@ function App() {
 
     const handleOptionClick = (option) => {
         if (!isSubmitted) {
+            playSound(buttonClickSound);
             setGuess(option.name);
             setOptions([]);
         }
@@ -90,13 +122,14 @@ function App() {
 
     const handleQuizSubmit = () => {
         setQuizOver(true);
+        playSound(finalScoreSound);
+        if (bgmRef.current) bgmRef.current.pause(); 
     };
 
     if (quizOver) {
         return (
             <div className="Score">
-                {/* <Scoreboard score={score} totalQuestions={questionsAttempted} dummyScores={dummyScores} /> */}
-                <BrandScan correctAns={score} accuracy={(score / questionsAttempted) * 100} mode={"Beginner"} />
+                <BrandScan correctAns={score} accuracy={(score / questionsAttempted) * 100} mode={"Advanced"} />
             </div>
         );
     }

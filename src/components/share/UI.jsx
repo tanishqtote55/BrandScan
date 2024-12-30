@@ -73,7 +73,7 @@ const BrandScan = ({ username, mode, correctAns, attemptedQs, accuracy }) => {
         {/* Accuracy */}
         <div className="bg-gradient-to-r from-purple-700 to-indigo-800 p-6 rounded-xl text-center shadow-lg">
           <p className="font-bold text-xl text-purple-200 uppercase">Accuracy</p>
-          <p className="text-white text-3xl mt-2">{accuracy}%</p>
+          <p className="text-white text-3xl mt-2">{Math.round(accuracy)}%</p>
         </div>
       </div>
 
