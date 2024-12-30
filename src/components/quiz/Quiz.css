@@ -1,7 +1,7 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+    background: linear-gradient(135deg, #6a1b9a, #8e24aa); /* Purple theme */
     color: #333;
     display: flex;
     justify-content: center;
@@ -57,11 +57,11 @@ body {
 }
 
 .timer {
-    width: 90px;
+    width: 80px;
     font-size: 18px;
     font-weight: bold;
     margin-bottom: 15px;
-    color: #f97316;
+    color: #6a1b9a;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -70,7 +70,7 @@ body {
 
 .timer span {
     font-size: 24px;
-    color: #ef4444;
+    color: #8e24aa;
     animation: pulse 1s infinite;
 }
 
@@ -87,7 +87,7 @@ body {
     font-size: 22px;
     font-weight: bold;
     margin-top: 20px;
-    color: #1d4ed8;
+    color: #6a1b9a;
     animation: bounceIn 0.8s;
 }
 
@@ -105,34 +105,22 @@ body {
 
 .logo-container {
     margin: 20px 0;
-    animation: logoPop 0.8s ease;
 }
 
 .logo-image {
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
     object-fit: contain;
     margin: auto;
-    border: 3px solid #f9fafb;
+    border: 3px solid #f3e5f5;
     border-radius: 12px;
     background-color: #f9f9f9;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-@keyframes logoPop {
-    from {
-        transform: scale(0.8);
-        opacity: 0;
-    }
-    to {
-        transform: scale(1);
-        opacity: 1;
-    }
-}
-
 .options-container {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     justify-content: center;
     gap: 10px;
 }
@@ -144,20 +132,20 @@ body {
     border-radius: 8px;
     transition: background-color 0.3s, border-color 0.3s, transform 0.2s;
     cursor: pointer;
-    background: linear-gradient(135deg, #e2e8f0, #cbd5e1);
+    background: #d1c4e9; /* Light purple */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    color: #1e293b;
+    color: #4a148c;
     font-weight: bold;
 }
 
 .option-button:hover {
-    background: linear-gradient(135deg, #d1fae5, #34d399);
-    border-color: #10b981;
+    background: #7e57c2; /* Dark purple on hover */
+    border-color: #5e35b1;
     transform: scale(1.05);
 }
 
 .option-button:focus {
-    outline: 3px solid #2563eb;
+    outline: 3px solid #7e57c2;
     transform: scale(1.05);
 }
 
@@ -165,46 +153,20 @@ body {
     background-color: #22c55e;
     color: #ffffff;
     border: none;
-    animation: correctGlow 1s ease;
-}
-
-@keyframes correctGlow {
-    0% {
-        box-shadow: 0 0 5px #16a34a;
-    }
-    50% {
-        box-shadow: 0 0 15px #16a34a;
-    }
-    100% {
-        box-shadow: 0 0 5px #16a34a;
-    }
 }
 
 .option-button.wrong {
     background-color: #ef4444;
     color: #ffffff;
     border: none;
-    animation: wrongShake 0.4s ease;
-}
-
-@keyframes wrongShake {
-    0%, 100% {
-        transform: translateX(0);
-    }
-    25% {
-        transform: translateX(-5px);
-    }
-    75% {
-        transform: translateX(5px);
-    }
 }
 
 .next-button {
     margin-top: 20px;
     padding: 12px 18px;
     font-size: 16px;
-    background: linear-gradient(135deg, #4f46e5, #3b82f6);
-    color: white;
+    background: #d1c4e9; /* Light purple */
+    color: #4a148c;
     border: none;
     border-radius: 8px;
     cursor: pointer;
@@ -213,7 +175,8 @@ body {
 }
 
 .next-button:hover {
-    background: linear-gradient(135deg, #3b82f6, #2563eb);
+    background: #7e57c2; /* Dark purple on hover */
+    color: #ffffff;
     transform: translateY(-2px);
 }
 
