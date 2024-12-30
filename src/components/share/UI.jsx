@@ -1,6 +1,7 @@
 import React from 'react';
 import html2canvas from 'html2canvas';
 import { FaShareAlt } from 'react-icons/fa';
+import { MdDownload } from 'react-icons/md';
 import logo from '../../assets/PSF25.png';
 
 const BrandScan = ({ username, mode, correctAns, attemptedQs, accuracy }) => {
@@ -29,55 +30,69 @@ const BrandScan = ({ username, mode, correctAns, attemptedQs, accuracy }) => {
   return (
     <div
       id="brandscan-container"
-      className="bg-gradient-to-b from-gray-900 to-gray-800 text-white p-6 shadow-2xl max-w-md mx-auto font-sans transform transition-all duration-500 hover:scale-105 hover:shadow-purple-600"
+      className="bg-gradient-to-br from-purple-800 via-indigo-900 to-black text-white p-8 shadow-2xl rounded-3xl max-w-lg mx-auto font-sans transform transition-all duration-500 hover:scale-105 hover:shadow-purple-600"
       style={{ maxWidth: '100%', margin: '0 auto' }}
     >
-      <img src={logo} alt="Pune Startup Fest" className="mx-auto w-28 mb-6 animate-pulse" />
+      {/* Logo */}
+      <img
+        src={logo}
+        alt="Pune Startup Fest"
+        className="mx-auto w-32 mb-8 animate-bounce"
+      />
 
-      <h2 className="text-2xl font-extrabold text-center mb-3 font-serif tracking-wider">
+      {/* Username */}
+      <h2 className="text-3xl font-extrabold text-center mb-4 font-serif tracking-wider text-gradient">
         {username}
       </h2>
-      <p className="text-center text-purple-400 text-3xl mb-8 font-bold tracking-wide uppercase">
+
+      {/* Title */}
+      <p className="text-center text-purple-300 text-4xl mb-8 font-extrabold uppercase tracking-wide animate-fade-in">
         BrandScan
       </p>
 
-      <div className="space-y-6">
+      {/* Stats Section */}
+      <div className="space-y-8">
+        {/* Mode Played */}
+        <div className="bg-gradient-to-r from-purple-700 to-indigo-800 p-6 rounded-xl text-center shadow-lg">
+          <p className="font-bold text-xl text-purple-200 uppercase">Mode Played</p>
+          <p className="text-white text-2xl mt-2">{mode}</p>
+        </div>
+
+        {/* Attempted Questions and Correct Answers */}
         <div className="grid grid-cols-2 gap-6">
-          <div className="bg-gray-800 p-4 rounded-xl text-center shadow-lg">
-            <p className="font-bold text-lg text-purple-400">Mode Played</p>
-            <p className="text-gray-300 text-xl">{mode}</p>
+          <div className="bg-gradient-to-r from-purple-700 to-indigo-800 p-6 rounded-xl text-center shadow-lg">
+            <p className="font-bold text-xl text-purple-200 uppercase">Attempted Qs</p>
+            <p className="text-white text-2xl mt-2">{attemptedQs}</p>
           </div>
-          <div className="bg-gray-800 p-4 rounded-xl text-center shadow-lg">
-            <p className="font-bold text-lg text-purple-400">Correct Answers</p>
-            <p className="text-gray-300 text-xl">{correctAns}</p>
+          <div className="bg-gradient-to-r from-purple-700 to-indigo-800 p-6 rounded-xl text-center shadow-lg">
+            <p className="font-bold text-xl text-purple-200 uppercase">Correct Answers</p>
+            <p className="text-white text-2xl mt-2">{correctAns}</p>
           </div>
         </div>
 
-        <div className="grid grid-cols-2 gap-6">
-        <div className="bg-gray-800 p-4 rounded-xl text-center shadow-lg">
-            <p className="font-bold text-lg text-purple-400">Attempted Qs</p>
-            <p className="text-gray-300 text-xl">{attemptedQs}</p>
-          </div>
-          <div className="bg-gray-800 p-4 rounded-xl text-center shadow-lg">
-          <p className="font-bold text-lg text-purple-400">Accuracy</p>
-          <p className="text-gray-300 text-2xl">{accuracy}%</p>
+        {/* Accuracy */}
+        <div className="bg-gradient-to-r from-purple-700 to-indigo-800 p-6 rounded-xl text-center shadow-lg">
+          <p className="font-bold text-xl text-purple-200 uppercase">Accuracy</p>
+          <p className="text-white text-3xl mt-2">{accuracy}%</p>
         </div>
-          </div>
       </div>
 
-      <h3 className="text-center text-blue-400 font-semibold mt-10 mb-4 text-lg tracking-wider animate-fade-in">
-        VOYAGE OF VISIONARIES
+      {/* Vision Statement */}
+      <h3 className="text-center text-purple-400 font-semibold mt-10 mb-6 text-lg tracking-wide animate-pulse">
+        Voyage of Visionaries
       </h3>
 
-      <div className="flex justify-between items-center mt-8">
+      {/* Buttons */}
+      <div className="flex justify-around items-center mt-8 space-x-4">
         <FaShareAlt
-          className="text-purple-500 cursor-pointer text-3xl transform hover:scale-110 transition duration-300"
+          className="text-purple-400 cursor-pointer text-4xl transform hover:scale-125 transition duration-300 animate-spin-slow"
           onClick={handleShare}
         />
         <button
-          className="bg-purple-600 text-white py-3 px-6 rounded-xl font-semibold text-lg shadow-md transform hover:bg-purple-700 hover:scale-105 transition duration-300"
+          className="bg-purple-600 text-white py-3 px-8 rounded-full font-semibold text-lg shadow-md transform hover:bg-purple-700 hover:scale-110 transition duration-300"
           onClick={handleDownload}
         >
+          <MdDownload className="inline-block mr-2 text-2xl" />
           Download
         </button>
       </div>

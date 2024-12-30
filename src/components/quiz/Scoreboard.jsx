@@ -40,7 +40,7 @@ const Scoreboard = ({ score, totalQuestions, dummyScores }) => {
     };
 
     const openInstagram = () => {
-        const instagramUrl = "https://www.instagram.com"; // Replace with your specific profile link if desired
+        const instagramUrl = "https://www.instagram.com"; 
         window.open(instagramUrl, "_blank");
     };
 
