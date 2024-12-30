@@ -30,7 +30,7 @@ const BrandScan = ({ username, mode, correctAns, attemptedQs, accuracy }) => {
   return (
     <div
       id="brandscan-container"
-      className="scale-75 bg-gradient-to-br from-purple-800 via-indigo-900 to-black text-white p-8 shadow-2xl rounded-3xl max-w-lg mx-auto font-sans transform transition-all duration-500 hover:shadow-purple-600"
+      className="scale-75 bg-gradient-to-br from-purple-800 via-indigo-900 to-black text-white p-8 shadow-2xl max-w-lg mx-auto font-sans transform transition-all duration-500 hover:shadow-purple-600"
       style={{ maxWidth: '100%', margin: '0 auto' }}
     >
       {/* Logo */}
