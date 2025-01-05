@@ -16,7 +16,6 @@ function App() {
   const [options, setOptions] = useState([]);
   const [selectedOption, setSelectedOption] = useState(null);
   const [isCorrect, setIsCorrect] = useState(null);
-  const [isSubmitted, setIsSubmitted] = useState(false);
   const [timeLeft, setTimeLeft] = useState(300);
   const [score, setScore] = useState(0);
   const [questionsAttempted, setQuestionsAttempted] = useState(0);
@@ -66,7 +65,6 @@ function App() {
     setOptions(generateOptions(selectedLogo.name));
     setSelectedOption(null);
     setIsCorrect(null);
-    setIsSubmitted(false);
   };
 
   const generateOptions = (correctName) => {
@@ -80,27 +78,24 @@ function App() {
     return allOptions.sort(() => 0.5 - Math.random());
   };
 
-  const handleSubmit = () => {
-    playSound(buttonClickSound);
+  const handleOptionClick = (option) => {
+    if (selectedOption) return;
+
+    setSelectedOption(option);
+    const correct = option === currentLogo.name;
+    setIsCorrect(correct);
     setQuestionsAttempted((prev) => prev + 1);
-    setIsSubmitted(true);
-    if (selectedOption === currentLogo.name) {
+
+    if (correct) {
       setScore((prev) => prev + 1);
       playSound(correctAnswerSound);
     } else {
       playSound(errorSound);
     }
+
     setTimeout(() => {
       getNextLogo();
     }, 1000);
-  };
-
-  const handleOptionClick = (option) => {
-    if (!isSubmitted) {
-      playSound(buttonClickSound);
-      setSelectedOption(option);
-      setIsCorrect(option === currentLogo.name);
-    }
   };
 
   const handleQuizSubmit = () => {
@@ -146,26 +141,17 @@ function App() {
             onClick={() => handleOptionClick(option)}
             className={`option-button ${
               selectedOption === option
-                ? isSubmitted
-                  ? isCorrect
-                    ? "correct"
-                    : "wrong"
-                  : "selected"
+                ? isCorrect
+                  ? "correct"
+                  : "wrong"
                 : ""
             }`}
-            disabled={isSubmitted}
+            disabled={!!selectedOption}
           >
             {option}
           </button>
         ))}
       </div>
-      <button
-        onClick={handleSubmit}
-        className="next-button"
-        disabled={!selectedOption || isSubmitted}
-      >
-        Next
-      </button>
     </div>
   );
 }

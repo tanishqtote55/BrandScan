@@ -16,8 +16,7 @@ body {
     max-width: 90vw;
     border-radius: 12px;
     padding: 20px;
-    font-family: Arial, sans-serif;
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.95);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
     margin: auto;
     position: relative;
@@ -40,14 +39,14 @@ body {
     max-width: 700px;
     margin: auto;
     margin-top: 50px;
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.95);
     color: #333;
     display: flex;
     flex-direction: column;
     gap: 20px;
     border-radius: 12px;
     padding: 30px 40px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .container hr {
@@ -57,7 +56,7 @@ body {
 }
 
 .timer {
-    width: 80px;
+    width: 90px;
     font-size: 18px;
     font-weight: bold;
     margin-bottom: 15px;
@@ -71,7 +70,7 @@ body {
 .timer span {
     font-size: 24px;
     color: #8e24aa;
-    animation: pulse 1s infinite;
+    animation: pulse 1.5s infinite;
 }
 
 @keyframes pulse {
@@ -79,7 +78,7 @@ body {
         transform: scale(1);
     }
     50% {
-        transform: scale(1.1);
+        transform: scale(1.15);
     }
 }
 
@@ -138,15 +137,11 @@ body {
     font-weight: bold;
 }
 
-.option-button:hover {
+.option-button:hover, .option-button:focus {
     background: #7e57c2;
     border-color: #5e35b1;
     transform: scale(1.05);
-}
-
-.option-button:focus {
     outline: 3px solid #7e57c2;
-    transform: scale(1.05);
 }
 
 .option-button.correct {
@@ -174,7 +169,7 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.next-button:hover {
+.next-button:hover:not(:disabled) {
     background: #7e57c2; 
     color: #ffffff;
     transform: translateY(-2px);
@@ -211,5 +206,9 @@ body {
     .next-button {
         width: 100%;
         font-size: 16px;
+    }
+
+    .container {
+        padding: 20px;
     }
 }
