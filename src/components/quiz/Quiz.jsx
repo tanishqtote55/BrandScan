@@ -16,7 +16,7 @@ function App() {
   const [options, setOptions] = useState([]);
   const [selectedOption, setSelectedOption] = useState(null);
   const [isCorrect, setIsCorrect] = useState(null);
-  const [timeLeft, setTimeLeft] = useState(300);
+  const [timeLeft, setTimeLeft] = useState(60);
   const [score, setScore] = useState(0);
   const [questionsAttempted, setQuestionsAttempted] = useState(0);
   const [quizOver, setQuizOver] = useState(false);
@@ -120,13 +120,16 @@ function App() {
 
   return (
     <div className="App">
+      <div className="score-display">
+        {score} / {questionsAttempted}
+      </div>
       <div className="timer">
         <CircularProgressbar
-          value={(timeLeft / 300) * 100}
+          value={(timeLeft / 60) * 100}
           text={`${Math.floor(timeLeft / 60)}:${timeLeft % 60 < 10 ? "0" : ""}${timeLeft % 60}`}
           styles={buildStyles({
             textColor: "black",
-            pathColor: timeLeft > 30 ? "green" : "red",
+            pathColor: timeLeft > 10 ? "green" : "red",
             trailColor: "#d6d6d6",
           })}
         />

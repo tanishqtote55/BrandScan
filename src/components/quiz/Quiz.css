@@ -186,6 +186,15 @@ body {
     display: none;
 }
 
+.score-display {
+    font-size: 18px;
+    font-weight: bold;
+    color: #6a1b9a;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+ 
+
 @media (max-width: 768px) {
     .App {
         height: auto;
